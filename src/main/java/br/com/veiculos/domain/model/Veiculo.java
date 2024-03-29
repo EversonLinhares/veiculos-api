@@ -1,6 +1,6 @@
 package br.com.veiculos.domain.model;
 
-import br.com.veiculos.domain.enums.VeiculoEnum;
+import br.com.veiculos.domain.enums.MarcaEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,7 +26,7 @@ public class Veiculo {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private VeiculoEnum marca;
+    private MarcaEnum marca;
 
     @Column(nullable = false)
     private Integer ano;

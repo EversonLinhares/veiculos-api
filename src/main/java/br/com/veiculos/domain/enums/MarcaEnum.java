@@ -1,5 +1,6 @@
 package br.com.veiculos.domain.enums;
 
+import br.com.veiculos.domain.exception.NegocioException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public enum VeiculoEnum {
+public enum MarcaEnum {
 
     VOLKSWAGEN("Volkswagen"),
     CHEVROLET("Chevrolet"),
@@ -32,13 +33,13 @@ public enum VeiculoEnum {
 
     private String nome;
 
-    public static VeiculoEnum findByNome(String nome) {
-        for (VeiculoEnum veiculoEnum : values()) {
-            if (veiculoEnum.nome.equals(nome)) {
-                return veiculoEnum;
+    public static MarcaEnum findByNome(String nome) {
+        for (MarcaEnum marcaEnum : values()) {
+            if (marcaEnum.nome.equals(nome)) {
+                return marcaEnum;
             }
         }
-        throw new RuntimeException("Não foi encontrado Sexo com o id informado.");
+        throw new NegocioException("Não foi encontrado Marca com o nome informado: " + nome);
     }
 
 
