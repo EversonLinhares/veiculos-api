@@ -25,4 +25,8 @@ public class MapperConvert {
         return listEntities.stream().map(l -> mapEntityToDto(l,dtoClass)).collect(Collectors.toList());
     }
 
+    public <D, E> void copy(D dto, E entidade) {
+        modelMapper.map(dto, entidade);
+    }
+
 }

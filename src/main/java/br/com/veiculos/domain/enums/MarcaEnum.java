@@ -18,7 +18,7 @@ public enum MarcaEnum {
     HYUNDAI("Hyundai"),
     FIAT("Fiat"),
     RENAULT("Renault"),
-    CITROEN("Citroën"),
+    CITROEN("Citroen"),
     NISSAN("Nissan"),
     PEUGEOT("Peugeot"),
     KIA("Kia"),
@@ -35,7 +35,7 @@ public enum MarcaEnum {
 
     public static MarcaEnum findByNome(String nome) {
         for (MarcaEnum marcaEnum : values()) {
-            if (marcaEnum.nome.equals(nome)) {
+            if (marcaEnum.nome.equalsIgnoreCase(nome)) {
                 return marcaEnum;
             }
         }
