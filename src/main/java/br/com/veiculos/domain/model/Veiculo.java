@@ -1,49 +1,32 @@
 package br.com.veiculos.domain.model;
 
-import br.com.veiculos.domain.enums.MarcaEnum;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
-import java.time.LocalDateTime;
+import java.io.Serializable;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@SQLDelete(sql = "UPDATE veiculo SET excluido = true WHERE id = ?")
+@Where(clause = "excluido = false")
 @Table(name = "veiculo")
-public class Veiculo {
+public class Veiculo extends BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Long id;
 
-    @Column(nullable = false)
-    private String veiculo;
+    @Column
+    private String cor;
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private MarcaEnum marca;
-
-    @Column(nullable = false)
-    private Integer ano;
-
-    @Column(nullable = false, length = 500)
-    private String descricao;
-
-    @Column(nullable = false)
-    private Boolean vendido;
-
-    @Column(nullable = false)
-    private LocalDateTime created;
-
-    @Column(nullable = false)
-    private LocalDateTime updated;
-
+    @Column
+    private Boolean excluido = Boolean.FALSE;
 
 }
-
-
